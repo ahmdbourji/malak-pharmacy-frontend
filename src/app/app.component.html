@@ -1,21 +1,28 @@
+<!-- header.component.html (أو في الـ app.component.html إذا النافبار ثابت) -->
 <header class="navbar">
   <div class="logo">Malak Medical</div>
-  <nav>
-    <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Home</a>
-    <a routerLink="/ourproducts" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Our Products</a>
-    <a routerLink="/about" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">About</a>
-    <a routerLink="/contact" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Contact</a>
+
+  <!-- أيقونة 3 خطوط تظهر على الموبايل -->
+  <button class="menu-toggle" (click)="toggleMenu()" aria-label="Toggle navigation">
+    <span class="bar"></span>
+    <span class="bar"></span>
+    <span class="bar"></span>
+  </button>
+
+  <!-- روابط النافبار -->
+  <nav [class.active]="menuOpen">
+    <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="closeMenu()">Home</a>
+    <a routerLink="/ourproducts" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="closeMenu()">Our Products</a>
+    <a routerLink="/about" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="closeMenu()">About</a>
+    <a routerLink="/contact" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="closeMenu()">Contact</a>
   </nav>
 </header>
-
 
 <!-- This is where the routed page content will display -->
 <router-outlet></router-outlet>
 
 <footer class="footer">
   <p>&copy; 2025 Malak Medical. All rights reserved.</p>
-
-  <!-- Social Media Icons -->
   <div class="social-icons">
     <a href="https://wa.me/96176127725" target="_blank" title="Chat on WhatsApp">
       <img [src] ="environment.imageUrl + 'iconwhats2.png'" alt="WhatsApp" width="30" height="30">

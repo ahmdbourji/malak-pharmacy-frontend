@@ -170,3 +170,80 @@ a.active {
 .social-icons img {
   vertical-align: middle;
 }
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #009688;
+  color: #fff;
+  padding: 0 32px;
+  height: 64px;
+  position: relative;
+}
+
+.logo {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 6px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: 120;
+}
+
+.menu-toggle .bar {
+  width: 28px;
+  height: 4px;
+  background: #fff;
+  border-radius: 2px;
+  display: block;
+}
+
+/* Nav Links */
+nav {
+  display: flex;
+  gap: 32px;
+}
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.08rem;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+nav a.active,
+nav a:hover {
+  color: #ffe082;
+}
+
+/* Responsive Styles */
+@media (max-width: 900px) {
+  .menu-toggle {
+    display: flex;
+  }
+  nav {
+    flex-direction: column;
+    position: absolute;
+    top: 64px;
+    right: 0;
+    width: 100vw;
+    background: #009688;
+    padding: 28px 0 28px 0;
+    gap: 28px;
+    z-index: 100;
+    display: none;
+    text-align: center;
+  }
+  nav.active {
+    display: flex;
+  }
+}
