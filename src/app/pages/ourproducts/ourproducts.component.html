@@ -1,0 +1,53 @@
+<div style="text-align: center;">
+  <h2 class="title">Our Products</h2>
+</div>
+
+<div class="container">
+  <input
+    type="text"
+    placeholder="search"
+    [(ngModel)]="searchTerm"
+    class="search-input"
+  />
+
+  <div class="category-filters">
+    <button (click)="clearCategoryFilter()" [class.active]="!selectedCategory">All</button>
+    <button
+      *ngFor="let cat of categories"
+      (click)="filterByCategory(cat)"
+      [class.active]="selectedCategory === cat"
+    >
+      {{ cat }}
+    </button>
+  </div>
+</div>
+
+<div class="products-grid">
+  <div *ngFor="let product of filteredProducts()" class="product-card">
+    <img
+      *ngIf="product.images"
+      [src]="environment.imageUrl + product.images"
+      class="product-image"
+      alt="{{ product.name }}"
+    />
+
+    <h3 class="product-name">{{ product.name }}</h3>
+
+    <p class="product-price">
+      Price: {{ product.price | currency: 'USD': 'symbol': '1.2-2' }}
+    </p>
+
+    <button class="btn-view-description" (click)="openDescription(product)">
+      View Description
+    </button>
+  </div>
+</div>
+
+<!-- Modal Popup -->
+<div class="modal-overlay" *ngIf="selectedProduct">
+  <div class="modal">
+    <h3>{{ selectedProduct.name }}</h3>
+    <p>{{ selectedProduct.description }}</p>
+    <button class="btn-close" (click)="closeDescription()">Close</button>
+  </div>
+</div>

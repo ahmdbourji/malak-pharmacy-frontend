@@ -1,0 +1,27 @@
+<header class="navbar">
+  <div class="logo">Malak Medical</div>
+  <nav>
+    <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Home</a>
+    <a routerLink="/ourproducts" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Our Products</a>
+    <a routerLink="/about" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">About</a>
+    <a routerLink="/contact" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Contact</a>
+  </nav>
+</header>
+
+
+<!-- This is where the routed page content will display -->
+<router-outlet></router-outlet>
+
+<footer class="footer">
+  <p>&copy; 2025 Malak Medical. All rights reserved.</p>
+
+  <!-- Social Media Icons -->
+  <div class="social-icons">
+    <a href="https://wa.me/96176127725" target="_blank" title="Chat on WhatsApp">
+      <img [src] ="environment.imageUrl + 'iconwhats2.png'" alt="WhatsApp" width="30" height="30">
+    </a>
+    <a href="https://www.instagram.com/malak_medical1?igsh=MTJ2MXN4M3d0czFqNw==" target="_blank" title="View Instagram">
+      <img [src] ="environment.imageUrl + 'iconinsta2.png'" alt="Instagram" width="30" height="30">
+    </a>
+  </div>
+</footer>

@@ -1,0 +1,76 @@
+.branches-wrapper {
+  padding: 2rem 1rem;
+  text-align: center;
+}
+
+.branches-title {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: #2c3e50;
+  font-weight: 600;
+  border-bottom: 3px solid #4CAF50;
+  display: inline-block;
+  padding-bottom: 0.5rem;
+}
+
+.branches-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+}
+
+.branch-card {
+  background-color: #e0f2f1; /* ✅ Soft teal */
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  width: 100%;
+  padding: 1.5rem;
+  transition: transform 0.3s ease;
+}
+
+.branch-card:hover {
+  transform: translateY(-5px);
+}
+
+.branch-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.branch-title {
+  margin: 0 0 0 0.75rem;
+  font-size: 1.2rem;
+  color: #2d3748;
+}
+
+.branch-details .detail-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+  margin-right: 0.6rem;
+}
+
+.detail-text {
+  color: #1a202c;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.detail-text:hover {
+  color: #00796b;
+  text-decoration: underline;
+}
+
+.map-container {
+  margin-top: 1rem;
+  border-radius: 8px;
+  overflow: hidden;
+}

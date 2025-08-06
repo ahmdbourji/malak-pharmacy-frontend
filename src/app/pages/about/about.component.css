@@ -1,0 +1,132 @@
+
+.about-container {
+  padding: 3rem 1.5rem;
+  max-width: 1200px;
+  margin: auto;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.page-title {
+  text-align: center;
+  font-size: 2.5rem;
+  color: #2c3e50;
+  margin-bottom: 2.5rem;
+  border-bottom: 4px solid #4CAF50;
+  display: inline-block;
+  padding-bottom: 0.5rem;
+}
+
+.about-content {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  align-items: flex-start;
+  margin-bottom: 3rem;
+}
+
+.about-text {
+  flex: 1;
+  min-width: 300px;
+}
+
+.about-text h2 {
+  color: #00796b;
+  margin-top: 1.5rem;
+}
+
+.about-text p {
+  line-height: 1.7;
+  color: #444;
+}
+
+.value-list {
+  padding-left: 1.2rem;
+  list-style-type: disc;
+  margin-top: 0.5rem;
+  color: #555;
+}
+
+.about-image {
+  flex: 1;
+  min-width: 300px;
+  text-align: center;
+}
+
+.about-image img {
+  width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.team-section {
+  text-align: center;
+}
+
+.team-section h2 {
+  font-size: 2rem;
+  color: #2c3e50;
+  margin-bottom: 2rem;
+}
+
+.team-members {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.member-card {
+  background-color: #e0f2f1;
+  border-radius: 12px;
+  padding: 1.5rem;
+  width: 250px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.member-card:hover {
+  transform: translateY(-5px);
+}
+
+.member-card img {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 0 auto 1rem;
+  display: block;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+.member-card h3 {
+  margin: 0.5rem 0;
+  color: #00796b;
+}
+
+.member-card p {
+  color: #555;
+}
+.about-title {
+  text-align: center;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.about-title h1 {
+  font-size: 2rem;
+  color: #004d40;
+  
+  position: relative;
+  display: inline-block;
+}
+
+.about-title h1::after {
+  content: '';
+  display: block;
+  height: 4px;
+  background-color: #26a69a;
+  margin-top: 10px;
+  border-radius: 2px;
+  width: 100%;
+}

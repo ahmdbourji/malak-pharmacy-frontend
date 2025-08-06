@@ -1,0 +1,39 @@
+<h2>Admin Panel</h2>
+
+<button class="logout-btn" (click)="logout()">Logout</button>
+
+<form (ngSubmit)="submitProduct()" #productForm="ngForm" enctype="multipart/form-data">
+  <input type="text" placeholder="Product Name" [(ngModel)]="product.name" name="name" required />
+  <input type="text" placeholder="Category" [(ngModel)]="product.category" name="category" required />
+  <input type="number" placeholder="Price" [(ngModel)]="product.price" name="price" required />
+  <textarea placeholder="Description" [(ngModel)]="product.description" name="description"></textarea>
+  <input type="file" (change)="onFileSelected($event)" />
+  <button type="submit">{{ isEditing ? 'Update Product' : 'Create Product' }}</button>
+  <button type="button" (click)="resetForm()">Reset</button>
+</form>
+
+<hr />
+
+<table class="product-table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Category</th>
+      <th>Price</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let p of products">
+      <td>{{ p.name }}</td>
+      <td>{{ p.category }}</td>
+      <td>{{ p.price | currency:'USD':'symbol' }}</td>
+      <td>
+        <button (click)="editProduct(p)">Edit</button>
+        <button (click)="deleteProduct(p.id)">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
