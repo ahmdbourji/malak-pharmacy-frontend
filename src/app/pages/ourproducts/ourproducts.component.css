@@ -26,7 +26,17 @@
   border-radius: 8px;
   margin-bottom: 1rem;
 }
+@media (max-width: 768px) {
+  /* تقلِّص حجم البطاقة وصورتها */
+  .products-grid {
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  }
 
+  .product-image {
+    width: 140px;
+    height: 140px;
+  }
+}
 .product-name {
   margin: 0 0 0.5rem 0;
   color: #2980b9;
