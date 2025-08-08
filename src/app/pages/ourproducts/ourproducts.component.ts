@@ -1,82 +1,70 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { RouterModule } from '@angular/router';
-
 import { ProductService } from '../../services/product.service';
+import { RouterModule } from '@angular/router';
 import { environment } from '../../../environments/environment';
 
 @Component({
   standalone: true,
   selector: 'app-ourproducts',
-  templateUrl: './ourproducts.component.html',
-  styleUrls: ['./ourproducts.component.css'],
   imports: [CommonModule, FormsModule, RouterModule],
+  templateUrl: './ourproducts.component.html',
+  styleUrls: ['./ourproducts.component.css']
 })
 export class OurproductsComponent implements OnInit {
   products: any[] = [];
-  searchTerm = '';
+  searchTerm: string = '';
   categories: string[] = [];
   selectedCategory: string | null = null;
+environment = environment;
+  // Remove this as description is shown in modal now
+  // showDescriptionMap: { [productId: number]: boolean } = {};
 
-  environment = environment; // exposes base URL to template
   private productService = inject(ProductService);
 
-  /* modal */
+  // === Modal selected product ===
   selectedProduct: any = null;
 
-  /* ---------- life-cycle ---------- */
-  ngOnInit(): void {
-    this.productService.getAllProducts().subscribe((data) => {
+  ngOnInit() {
+    this.productService.getAllProducts().subscribe(data => {
       this.products = data;
-      this.categories = [
-        ...new Set(this.products.map((p) => p.category).filter(Boolean)),
-      ];
+      this.categories = [...new Set(this.products.map(p => p.category).filter(Boolean))];
     });
   }
 
-  /* ---------- category filter ---------- */
-  filterByCategory(category: string): void {
+  filterByCategory(category: string) {
     this.selectedCategory = category;
   }
 
-  clearCategoryFilter(): void {
+  clearCategoryFilter() {
     this.selectedCategory = null;
   }
 
-  // fired by <select>
-  onSelectCategory(event: Event): void {
-    const selectEl = event.target as HTMLSelectElement; // safe cast
-    const value = selectEl?.value ?? '';
-    value ? this.filterByCategory(value) : this.clearCategoryFilter();
-  }
-
-  /* ---------- search + filter pipeline ---------- */
-  filteredProducts(): any[] {
+  filteredProducts() {
     let filtered = this.products;
 
     if (this.searchTerm.trim()) {
-      const term = this.searchTerm.toLowerCase();
-      filtered = filtered.filter(
-        (p) =>
-          p.name.toLowerCase().includes(term) ||
-          (p.category && p.category.toLowerCase().includes(term))
+      filtered = filtered.filter(p =>
+        p.name.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+        (p.category && p.category.toLowerCase().includes(this.searchTerm.toLowerCase()))
       );
     }
 
     if (this.selectedCategory) {
-      filtered = filtered.filter((p) => p.category === this.selectedCategory);
+      filtered = filtered.filter(p => p.category === this.selectedCategory);
     }
 
     return filtered;
   }
 
-  /* ---------- modal ---------- */
-  openDescription(product: any): void {
+  // Remove toggleDescription and replace with modal open/close methods
+
+  openDescription(product: any) {
     this.selectedProduct = product;
   }
 
-  closeDescription(): void {
+  closeDescription() {
     this.selectedProduct = null;
   }
 }

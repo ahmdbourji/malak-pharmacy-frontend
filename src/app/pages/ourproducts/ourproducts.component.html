@@ -1,9 +1,8 @@
-<div style="text-align: center">
+<div style="text-align: center;">
   <h2 class="title">Our Products</h2>
 </div>
 
 <div class="container">
-  <!-- search -->
   <input
     type="text"
     placeholder="search"
@@ -11,11 +10,8 @@
     class="search-input"
   />
 
-  <!-- buttons (laptop / tablet) -->
   <div class="category-filters">
-    <button (click)="clearCategoryFilter()" [class.active]="!selectedCategory">
-      All
-    </button>
+    <button (click)="clearCategoryFilter()" [class.active]="!selectedCategory">All</button>
     <button
       *ngFor="let cat of categories"
       (click)="filterByCategory(cat)"
@@ -24,12 +20,6 @@
       {{ cat }}
     </button>
   </div>
-
-  <!-- select (mobile) -->
-  <select class="category-select" (change)="onSelectCategory($event)">
-    <option value="">All</option>
-    <option *ngFor="let cat of categories" [value]="cat">{{ cat }}</option>
-  </select>
 </div>
 
 <div class="products-grid">
@@ -44,7 +34,7 @@
     <h3 class="product-name">{{ product.name }}</h3>
 
     <p class="product-price">
-      Price: {{ product.price | currency: 'USD':'symbol':'1.2-2' }}
+      Price: {{ product.price | currency: 'USD': 'symbol': '1.2-2' }}
     </p>
 
     <button class="btn-view-description" (click)="openDescription(product)">
@@ -53,7 +43,7 @@
   </div>
 </div>
 
-<!-- modal -->
+<!-- Modal Popup -->
 <div class="modal-overlay" *ngIf="selectedProduct">
   <div class="modal">
     <h3>{{ selectedProduct.name }}</h3>
