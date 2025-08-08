@@ -26,7 +26,7 @@
   <div *ngFor="let product of filteredProducts()" class="product-card">
     <img
       *ngIf="product.images"
-      [src]="environment.imageUrl + product.images"
+      [src]="product.images"
       class="product-image"
       alt="{{ product.name }}"
     />
