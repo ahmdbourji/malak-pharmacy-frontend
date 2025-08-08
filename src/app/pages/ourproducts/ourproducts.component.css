@@ -1,4 +1,4 @@
-
+/* ===== grid ===== */
 .products-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
@@ -8,7 +8,7 @@
 .product-card {
   display: flex;
   flex-direction: column;
-  background-color: white;
+  background-color: #fff;
   padding: 1rem 1.2rem;
   border-radius: 10px;
   box-shadow: 0 2px 6px rgb(0 0 0 / 0.1);
@@ -26,8 +26,9 @@
   border-radius: 8px;
   margin-bottom: 1rem;
 }
+
+/* ===== responsive (≤ 768 px) ===== */
 @media (max-width: 768px) {
-  /* تقلِّص حجم البطاقة وصورتها */
   .products-grid {
     grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
   }
@@ -36,32 +37,43 @@
     width: 140px;
     height: 140px;
   }
-}
-.product-name {
-  margin: 0 0 0.5rem 0;
-  color: #2980b9;
+
+  /* hide buttons, show select */
+  .category-filters {
+    display: none;
+  }
+  .category-select {
+    display: inline-block;
+  }
 }
 
+/* ===== headings / text ===== */
+.product-name {
+  margin: 0 0 0.5rem;
+  color: #2980b9;
+}
 .product-price {
   margin: 0.25rem 0;
   color: #555;
 }
 
-.btn-view-description {
-  margin-top: auto; 
+/* ===== action buttons ===== */
+.btn-view-description,
+.btn-close {
   background-color: #00796b;
-  color: white;
+  color: #fff;
   border: none;
   padding: 8px 16px;
   border-radius: 4px;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
-
-.btn-view-description:hover {
+.btn-view-description:hover,
+.btn-close:hover {
   background-color: #004d40;
 }
 
+/* ===== layout helpers ===== */
 .container {
   max-width: 900px;
   margin: 2rem auto;
@@ -79,18 +91,17 @@
   margin-bottom: 2rem;
   transition: border-color 0.3s ease;
 }
-
 .search-input:focus {
   outline: none;
   border-color: #3498db;
 }
 
+/* ===== category buttons ===== */
 .category-filters {
   display: inline-flex;
   gap: 10px;
   margin-left: 1rem;
 }
-
 .category-filters button {
   background-color: #eee;
   border: none;
@@ -98,16 +109,29 @@
   border-radius: 5px;
   cursor: pointer;
 }
-
 .category-filters button.active {
   background-color: #009688;
-  color: white;
+  color: #fff;
 }
 
+/* ===== select (mobile) ===== */
+.category-select {
+  display: none; /* shown via media query */
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-left: 1rem;
+  font-size: 1rem;
+}
+.category-select:focus {
+  outline: none;
+  border-color: #009688;
+}
+
+/* ===== title underline ===== */
 .title {
   font-size: 2rem;
   font-weight: bold;
-  text-align: center;
   margin-top: 2rem;
   margin-bottom: 1rem;
   color: #004d40;
@@ -115,7 +139,6 @@
   display: inline-block;
   position: relative;
 }
-
 .title::after {
   content: '';
   position: absolute;
@@ -127,52 +150,33 @@
   border-radius: 2px;
 }
 
+/* ===== modal ===== */
 .modal-overlay {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba(0,0,0,0.5);
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 1000;
 }
-
 .modal {
-  background-color: white;
+  background-color: #fff;
   padding: 1.5rem 2rem;
   border-radius: 8px;
   max-width: 400px;
   width: 90%;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
   text-align: center;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
-
 .modal h3 {
   margin-top: 0;
   color: #2980b9;
 }
-
 .modal p {
-  margin: 1rem 0 2rem 0;
-  color: #444;
+  margin: 1rem 0 2rem;
   font-size: 1rem;
   max-height: 200px;
   overflow-y: auto;
-}
-
-.btn-close {
-  background-color: #00796b;
-  color: white;
-  border: none;
-  padding: 0.5rem 1.2rem;
-  border-radius: 6px;
-  cursor: pointer;
-  font-size: 1rem;
-}
-
-.btn-close:hover {
-  background-color: #004d40;
+  color: #444;
 }
