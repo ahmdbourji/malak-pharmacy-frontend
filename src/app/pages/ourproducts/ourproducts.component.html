@@ -10,6 +10,7 @@
     class="search-input"
   />
 
+  <!-- Buttons (desktop/tablet) -->
   <div class="category-filters">
     <button (click)="clearCategoryFilter()" [class.active]="!selectedCategory">All</button>
     <button
@@ -19,6 +20,18 @@
     >
       {{ cat }}
     </button>
+  </div>
+
+  <!-- Select (mobile) -->
+  <div class="category-select">
+    <select
+      [ngModel]="selectedCategory || ''"
+      (ngModelChange)="onCategorySelect($event)"
+      aria-label="Filter by category"
+    >
+      <option value="">All</option>
+      <option *ngFor="let cat of categories" [value]="cat">{{ cat }}</option>
+    </select>
   </div>
 </div>
 
@@ -51,3 +64,4 @@
     <button class="btn-close" (click)="closeDescription()">Close</button>
   </div>
 </div>
+
