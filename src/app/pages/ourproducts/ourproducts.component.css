@@ -76,21 +76,22 @@
 .search-input{
   display:block;
   width:100%;
-  padding:.65rem 1rem .65rem 2.6rem;            /* مساحة لأيقونة العدسة */
-  font-size:1.05rem;
-  border-radius:999px;                           /* كبسولة */
+  padding:.4rem .9rem .4rem 2.2rem;   /* كان .65rem و 2.6rem */
+  font-size:.95rem;                    /* كان 1.05rem */
+  border-radius:999px;
   border:1px solid #d1d5db;
-  background:#fff url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23667085' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><circle cx='11' cy='11' r='7'/><line x1='21' y1='21' x2='16.65' y2='16.65'/></svg>") no-repeat 12px 50%;
-  background-size:16px 16px;
-  transition:border-color .2s, box-shadow .2s, background-color .2s;
-  margin-bottom: 1rem;
+  background:#fff url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23667085' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><circle cx='11' cy='11' r='7'/><line x1='21' y1='21' x2='16.65' y2='16.65'/></svg>")
+    no-repeat 10px 50%;
+  background-size:14px 14px;           /* كان 16px */
+  transition:border-color .2s, box-shadow .2s;
+  margin-bottom:.8rem;
 }
 .search-input:hover{ box-shadow:0 2px 6px rgba(0,0,0,.06); }
 .search-input:focus{
-  outline:none;
-  border-color:#26a69a;
-  box-shadow:0 0 0 4px rgba(38,166,154,.15);
+  outline:none; border-color:#26a69a;
+  box-shadow:0 0 0 3px rgba(38,166,154,.15);    /* كان 4px */
 }
+
 
 /* ===== فلاتر الفئات (ديسكتوب – كبسولات) ===== */
 .category-filters {
