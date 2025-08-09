@@ -25,17 +25,17 @@
   border-radius: 8px;
   margin-bottom: 1rem;
 }
-
 @media (max-width: 768px) {
+  /* تقلِّص حجم البطاقة وصورتها */
   .products-grid {
     grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
   }
+
   .product-image {
     width: 140px;
     height: 140px;
   }
 }
-
 .product-name {
   margin: 0 0 0.5rem 0;
   color: #2980b9;
@@ -47,7 +47,7 @@
 }
 
 .btn-view-description {
-  margin-top: auto;
+  margin-top: auto; 
   background-color: #00796b;
   color: white;
   border: none;
@@ -75,7 +75,7 @@
   font-size: 1.1rem;
   border-radius: 5px;
   border: 1px solid #ccc;
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
   transition: border-color 0.3s ease;
 }
 
@@ -84,26 +84,10 @@
   border-color: #3498db;
 }
 
-/* Buttons row (desktop) */
 .category-filters {
   display: inline-flex;
   gap: 10px;
   margin-left: 1rem;
-}
-
-/* Mobile select (hidden by default) */
-.category-select {
-  display: none;
-  margin: 0.5rem 0 1rem 0;
-}
-
-.category-select select {
-  width: 100%;
-  padding: 8px 12px;
-  font-size: 1rem;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  background: #fff;
 }
 
 .category-filters button {
@@ -117,12 +101,6 @@
 .category-filters button.active {
   background-color: #009688;
   color: white;
-}
-
-/* Switch to select on small screens */
-@media (max-width: 768px) {
-  .category-filters { display: none; }
-  .category-select { display: block; }
 }
 
 .title {
@@ -197,7 +175,6 @@
 .btn-close:hover {
   background-color: #004d40;
 }
-
 
 
 

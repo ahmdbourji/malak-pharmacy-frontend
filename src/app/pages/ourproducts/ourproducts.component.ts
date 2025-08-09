@@ -14,14 +14,16 @@ import { environment } from '../../../environments/environment';
 })
 export class OurproductsComponent implements OnInit {
   products: any[] = [];
-  searchTerm = '';
+  searchTerm: string = '';
   categories: string[] = [];
   selectedCategory: string | null = null;
-  environment = environment;
+environment = environment;
+  // Remove this as description is shown in modal now
+  // showDescriptionMap: { [productId: number]: boolean } = {};
 
   private productService = inject(ProductService);
 
-  // Modal
+  // === Modal selected product ===
   selectedProduct: any = null;
 
   ngOnInit() {
@@ -39,19 +41,13 @@ export class OurproductsComponent implements OnInit {
     this.selectedCategory = null;
   }
 
-  // called by the mobile <select>
-  onCategorySelect(value: string) {
-    this.selectedCategory = value || null; // '' => All
-  }
-
   filteredProducts() {
     let filtered = this.products;
 
     if (this.searchTerm.trim()) {
-      const q = this.searchTerm.toLowerCase();
       filtered = filtered.filter(p =>
-        p.name.toLowerCase().includes(q) ||
-        (p.category && p.category.toLowerCase().includes(q))
+        p.name.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+        (p.category && p.category.toLowerCase().includes(this.searchTerm.toLowerCase()))
       );
     }
 
@@ -61,6 +57,8 @@ export class OurproductsComponent implements OnInit {
 
     return filtered;
   }
+
+  // Remove toggleDescription and replace with modal open/close methods
 
   openDescription(product: any) {
     this.selectedProduct = product;
