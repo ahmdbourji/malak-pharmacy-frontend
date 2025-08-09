@@ -27,7 +27,6 @@ body { background: var(--bg); }
   border-radius:2px;
 }
 
-/* Sticky toolbar */
 .toolbar{
   position: sticky; top: 0; z-index: 50;
   display: grid;
@@ -40,7 +39,6 @@ body { background: var(--bg); }
   border-bottom: 1px solid var(--ring);
 }
 
-/* Search */
 .search-wrapper{ position: relative; }
 .search-input{
   width:100%; padding:.65rem 2.4rem .65rem .9rem;
@@ -53,7 +51,6 @@ body { background: var(--bg); }
   font-size:1.1rem; opacity:.65; pointer-events:none;
 }
 
-/* Category filters (desktop) */
 .category-filters{ display:inline-flex; gap:.5rem; flex-wrap:wrap; }
 .category-filters button{
   background:#eef3f3; border:1px solid transparent; padding:.45rem .8rem;
@@ -62,13 +59,11 @@ body { background: var(--bg); }
 .category-filters button:hover{ border-color: var(--brand-2); }
 .category-filters button.active{ background: var(--brand); color:#fff; }
 
-/* Mobile category select */
 .category-select{ display:none; }
 .category-select select{
   width:100%; padding:.55rem .7rem; font-size:1rem; border:1px solid #d0d5dd; border-radius:10px; background:#fff;
 }
 
-/* Sort */
 .sort select{
   padding:.55rem .7rem; border:1px solid #d0d5dd; border-radius:10px; background:#fff;
 }
@@ -78,7 +73,6 @@ body { background: var(--bg); }
   cursor:pointer; padding:.3rem .4rem; text-decoration:underline;
 }
 
-/* Grid & cards */
 .products-grid{
   display:grid;
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
@@ -113,7 +107,6 @@ body { background: var(--bg); }
 }
 .btn-view-description:hover{ background:#004d40; }
 
-/* Skeletons */
 .skeleton{ overflow:hidden; }
 .skel-img,.skel-line,.skel-btn{
   background: linear-gradient(90deg, #eee 25%, #f6f6f6 50%, #eee 75%);
@@ -126,7 +119,6 @@ body { background: var(--bg); }
 .skel-btn{ height:38px; margin-top:1rem; border-radius:10px; }
 @keyframes shimmer{ 0%{background-position: 200% 0} 100%{background-position: -200% 0} }
 
-/* Modal */
 .modal-overlay{
   position:fixed; inset:0; background: rgba(0,0,0,.5);
   display:flex; align-items:center; justify-content:center; z-index:1000;
@@ -140,7 +132,6 @@ body { background: var(--bg); }
 .modal p{ margin: .9rem 0 1.2rem; color:#444; max-height: 240px; overflow:auto; }
 .btn-close{ background: var(--brand); color:#fff; border:none; padding:.6rem 1rem; border-radius:10px; cursor:pointer; }
 
-/* Responsive */
 @media (max-width: 900px){
   .toolbar{ grid-template-columns: 1fr 1fr auto; grid-auto-rows: auto; }
   .category-filters{ display:none; }
