@@ -1,54 +1,88 @@
-<div style="text-align: center;">
+<div class="page-header">
   <h2 class="title">Our Products</h2>
 </div>
 
-<div class="container">
-  <input
-    type="text"
-    placeholder="search"
-    [(ngModel)]="searchTerm"
-    class="search-input"
-  />
+<!-- Sticky toolbar -->
+<div class="toolbar">
+  <!-- Search -->
+  <div class="search-wrapper">
+    <input
+      type="text"
+      placeholder="Search products..."
+      [(ngModel)]="searchTerm"
+      class="search-input"
+    />
+    <span class="search-icon" aria-hidden="true">🔎</span>
+  </div>
 
-  <!-- Buttons (desktop/tablet) -->
+  <!-- Desktop pills -->
   <div class="category-filters">
     <button (click)="clearCategoryFilter()" [class.active]="!selectedCategory">All</button>
     <button
       *ngFor="let cat of categories"
       (click)="filterByCategory(cat)"
-      [class.active]="selectedCategory === cat"
-    >
+      [class.active]="selectedCategory === cat">
       {{ cat }}
     </button>
   </div>
 
-  <!-- Select (mobile) -->
+  <!-- Mobile select -->
   <div class="category-select">
     <select
       [ngModel]="selectedCategory || ''"
       (ngModelChange)="onCategorySelect($event)"
-      aria-label="Filter by category"
-    >
+      aria-label="Filter by category">
       <option value="">All</option>
       <option *ngFor="let cat of categories" [value]="cat">{{ cat }}</option>
     </select>
   </div>
+
+  <!-- Sort -->
+  <div class="sort">
+    <select [(ngModel)]="sortBy" aria-label="Sort products">
+      <option value="newest">Newest</option>
+      <option value="priceAsc">Price: Low → High</option>
+      <option value="priceDesc">Price: High → Low</option>
+      <option value="nameAsc">Name: A → Z</option>
+    </select>
+  </div>
+
+  <button class="link-reset" (click)="clearAll()" *ngIf="selectedCategory || searchTerm">Clear filters</button>
 </div>
 
-<div class="products-grid">
-  <div *ngFor="let product of filteredProducts()" class="product-card">
-    <img
-      *ngIf="product.images"
-      [src]="product.images"
-      class="product-image"
-      alt="{{ product.name }}"
-    />
+<!-- Skeletons while loading -->
+<div class="products-grid" *ngIf="loading">
+  <div class="product-card skeleton" *ngFor="let s of skeletons">
+    <div class="skel-img"></div>
+    <div class="skel-line w-70"></div>
+    <div class="skel-line w-40"></div>
+    <div class="skel-btn"></div>
+  </div>
+</div>
+
+<!-- Empty state -->
+<div class="empty" *ngIf="!loading && filteredProducts().length === 0">
+  <p>No products found.</p>
+  <button (click)="clearAll()">Reset filters</button>
+</div>
+
+<!-- Products -->
+<div class="products-grid" *ngIf="!loading && filteredProducts().length">
+  <div *ngFor="let product of filteredProducts(); trackBy: trackById" class="product-card">
+    <div class="img-wrap">
+      <img
+        *ngIf="product.images"
+        [src]="product.images"
+        class="product-image"
+        [alt]="product.name"
+        loading="lazy"/>
+      <span class="price-badge">
+        {{ product.price | currency: 'USD':'symbol':'1.0-0' }}
+      </span>
+    </div>
 
     <h3 class="product-name">{{ product.name }}</h3>
-
-    <p class="product-price">
-      Price: {{ product.price | currency: 'USD': 'symbol': '1.2-2' }}
-    </p>
+    <p class="product-price muted">Category: {{ product.category || '—' }}</p>
 
     <button class="btn-view-description" (click)="openDescription(product)">
       View Description
@@ -56,12 +90,13 @@
   </div>
 </div>
 
-<!-- Modal Popup -->
-<div class="modal-overlay" *ngIf="selectedProduct">
-  <div class="modal">
+<!-- Modal -->
+<div class="modal-overlay" *ngIf="selectedProduct" (click)="closeDescription()">
+  <div class="modal" (click)="$event.stopPropagation()">
     <h3>{{ selectedProduct.name }}</h3>
     <p>{{ selectedProduct.description }}</p>
     <button class="btn-close" (click)="closeDescription()">Close</button>
   </div>
 </div>
+
 
