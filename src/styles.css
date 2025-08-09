@@ -1,19 +1,1 @@
 /* You can add global styles to this file, and also import other style files */
-:root{
-  --bg:#f6fbfb; --card:#fff; --brand:#00796b; --brand-2:#26a69a;
-  --text:#1b1b1b; --muted:#667085; --ring:rgba(0,0,0,.06);
-}
-body{ background: var(--bg); }
-
-/* Skeletons (عالمي) */
-.skeleton{ overflow:hidden; }
-.skel-img,.skel-line,.skel-btn{
-  background: linear-gradient(90deg, #eee 25%, #f6f6f6 50%, #eee 75%);
-  background-size: 200% 100%; animation: shimmer 1.2s infinite;
-  border-radius:10px;
-}
-.skel-img{ width:200px; height:200px; align-self:center; }
-.skel-line{ height:14px; margin-top:.5rem; }
-.skel-line.w-70{ width:70%; } .skel-line.w-40{ width:40%; }
-.skel-btn{ height:38px; margin-top:1rem; border-radius:10px; }
-@keyframes shimmer{ 0%{background-position:200% 0} 100%{background-position:-200% 0} }
