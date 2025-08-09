@@ -31,11 +31,18 @@ export class OurproductsComponent implements OnInit {
     });
   }
 
-  filterByCategory(category: string) { this.selectedCategory = category; }
-  clearCategoryFilter() { this.selectedCategory = null; }
+  filterByCategory(category: string) {
+    this.selectedCategory = category;
+  }
 
-  // للـ <select> على الموبايل
-  onCategorySelect(value: string) { this.selectedCategory = value || null; }
+  clearCategoryFilter() {
+    this.selectedCategory = null;
+  }
+
+  // called by the mobile <select>
+  onCategorySelect(value: string) {
+    this.selectedCategory = value || null; // '' => All
+  }
 
   filteredProducts() {
     let filtered = this.products;
@@ -43,8 +50,8 @@ export class OurproductsComponent implements OnInit {
     if (this.searchTerm.trim()) {
       const q = this.searchTerm.toLowerCase();
       filtered = filtered.filter(p =>
-        (p.name || '').toLowerCase().includes(q) ||
-        (p.category || '').toLowerCase().includes(q)
+        p.name.toLowerCase().includes(q) ||
+        (p.category && p.category.toLowerCase().includes(q))
       );
     }
 
@@ -55,9 +62,15 @@ export class OurproductsComponent implements OnInit {
     return filtered;
   }
 
-  openDescription(product: any) { this.selectedProduct = product; }
-  closeDescription() { this.selectedProduct = null; }
+  openDescription(product: any) {
+    this.selectedProduct = product;
+  }
+
+  closeDescription() {
+    this.selectedProduct = null;
+  }
 }
+
 
 
 
